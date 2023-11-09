@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Excel File</title>
+</head>
+<body>
+    <h1>Upload Excel File for SKOS Conversion</h1>
+
+    <!-- Instructions Section -->
+    <div>
+        <h2>Instructions:</h2>
+        <ol>
+            <li><strong>Excel File:</strong> Upload your Excel file with the SKOS data using the provided field.</li>
+            <li><strong>Mapping Columns:</strong> The form will dynamically generate fields for each SKOS property based on your Excel file. Enter the column names from the Excel sheet that correspond to each SKOS property. If a SKOS property does not have a corresponding column in your Excel file, leave that field empty.</li>
+            <li><strong>Handling Multilingual Data:</strong> For columns containing multiple values or multilingual labels, separate each value with a comma. Attach a language tag to a label by appending "@<language_code>" to the label. For example: "Label @en, Etiqueta @es".</li>
+            <li><strong>URI for Concepts:</strong> Make sure to fill out the field corresponding to 'skos:concept' as it determines the URI for each concept in the RDF output.</li>
+            <li><strong>Output Format:</strong> Choose the desired RDF serialization format for the output file from the 'Output Format' dropdown menu.</li>
+            <li><strong>Generating RDF:</strong> After completing the form, submit it to convert your Excel data into an RDF file in the selected format. The RDF file will be available for download once the conversion is complete.</li>
+        </ol>
+        <p>This tool is designed to facilitate the creation of SKOS-based RDF files from Excel data, simplifying semantic data management. It is suitable for both experienced semantic web developers and newcomers. Try it out to enhance your data management workflow.</p>
+    </div>
+
+    <!-- Upload Form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload and Convert</button>
+    </form>
+</body>
+</html>
