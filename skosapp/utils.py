@@ -30,7 +30,7 @@ def generate_rdf(df, column_mapping):
                         lang_tag = None
                         if '@' in value:
                             value, lang_tag = value.rsplit('@', 1)
-                        property_name = skos_property  # Zakładamy, że przedrostki 'skos:' już nie ma
+                        property_name = skos_property  # Zakładamy, że przedrostka 'skos:' już nie ma
                         if property_name in ['broadMatch', 'narrowMatch', 'relatedMatch', 'closeMatch', 'exactMatch']:
                             g.add((concept_uri, skos[property_name], URIRef(value.strip())))
                         else:
